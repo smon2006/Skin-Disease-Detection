@@ -11,7 +11,6 @@ import urllib.request
 def load_model():
     device = torch.device("cpu") 
     weights_filename = "efficientnet_b0_skin_disease_74_9_acc.pth"
-    
     if not os.path.exists(weights_filename):
         print("Backend Notice: Syncing system architecture assets...")
         url = "https://huggingface.co/smon2006/skin-disease-detection/resolve/main/efficientnet_b0_skin_disease_74_9_acc.pth?download=true"

@@ -1,6 +1,8 @@
 # Skin Disease Detection using EfficientNet-B0
 
 A Deep Learning project using **PyTorch** and **Transfer Learning** to detect 22 different types of skin conditions. This model utilizes the **EfficientNet-B0** architecture, fine-tuned with advanced techniques like Test-Time Augmentation (TTA), Label Smoothing, and Cosine Annealing.
+## 🚀 Live Web Application
+Try the live interactive dashboard here: **[skin-disease-detection-system.streamlit.app](https://skin-disease-detection-system.streamlit.app/)** 
 
 ## Performance Summary
 * **Top-1 Accuracy:** 74.90%
@@ -10,12 +12,14 @@ A Deep Learning project using **PyTorch** and **Transfer Learning** to detect 22
 ---
 
 ## Tech Stack & Methods
+-  **Frontend App:** Streamlit (Cloud Deployed)
 - **Framework:** PyTorch
 - **Base Model:** `EfficientNet_B0` (Pre-trained on ImageNet)
 - **Optimizer:** `AdamW` with differential learning rates (features: `1e-7`, classifier: `1e-6`)
 - **Scheduler:** `CosineAnnealingLR`
 - **Loss Function:** `CrossEntropyLoss` with **Label Smoothing (0.1)** and **Class Weights** to handle dataset imbalance.
 - **Augmentations:** Random Horizontal/Vertical Flips, ColorJitter, Random Rotation, and Random Cropping.
+- **Weights Pipeline:** Production-optimized stream fetching binaries on-demand from Hugging Face Hub to keep the repository lightweight.
 
 ## Dataset
 The model was trained on the [Skin Disease Dataset](https://www.kaggle.com/datasets/pacificrm/skindiseasedataset) from Kaggle, containing 13,898 training images and 1,546 test images across 22 classes:
@@ -54,18 +58,14 @@ The model shows exceptional performance on "Unknown_Normal" and "Vitiligo," whil
 ## How to Use
 
 ### 1. Prerequisites
+Install the required application ecosystem dependencies:
 ```bash
-pip install torch torchvision matplotlib seaborn scikit-learn pillow
+pip install streamlit torch torchvision pillow
 ```
-
-### 2. Run Inference
-You can use the `predict_real_image` function provided in the source code to run Top-3 predictions on any local image:
-
-```python
-# Example usage
-predict_real_image(model=my_model, 
-                   image_path="path_to_your_image.jpg", 
-                   class_names=class_names)
+### 2. Run the Application
+Launch the unified interface server directly on your local host environment:
+```bash
+streamlit run streamlit_app.py
 ```
 ---
 
